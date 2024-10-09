@@ -89,3 +89,21 @@ light:
     id: th10_1_relay
     output: relay
 ```
+
+### Adding a DS18B20 Temperature Sensor
+
+A [DS18B20](https://sonoff.tech/product-document/ds18b20-doc/) sensor connected through 2.5 mm jack will be available as a [Dallas Temperature](https://esphome.io/components/sensor/dallas_temp.html) via 1-Wire. Add the following to your config:
+
+```yaml
+one_wire:
+  - platform: gpio
+    pin: GPIO14
+
+sensor:
+  # existing sensors here
+  - platform: dallas_temp
+    name: temperature
+    update_interval: 120s
+```
+
+
